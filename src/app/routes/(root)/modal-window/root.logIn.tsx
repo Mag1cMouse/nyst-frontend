@@ -8,21 +8,37 @@ type TFormObject = {
   remember: boolean
 }
 
-export function RootLogin() {
+type TProps = {
+  setIsShowModalWindow: (value: boolean) => void
+}
+
+export function RootLogin(props: TProps) {
+  const { setIsShowModalWindow } = props
   const [form, setForm] = useState<TFormObject>({
     email: '',
     password: '',
     remember: false,
   })
 
-  const updateField = (field: Partial<TFormObject>) => {
-    setForm((prev) => ({ ...prev, ...field }))
+  const updateField = (field: TFormObject) => {
+    setForm(field)
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <form action="" className="flex flex-col gap-3 px-30 py-6 text-sm font-light shadow-2xl shadow-black">
+    <div
+      className="absolute z-50 flex size-full flex-col items-center justify-center bg-black/30"
+      onClick={() => setIsShowModalWindow(false)}
+    >
+      <form
+        action="submit"
+        onSubmit={(e) => {
+          e.preventDefault()
+          console.log(form)
+        }}
+        className="relative flex flex-col gap-3 rounded-lg bg-white px-30 py-6 text-sm font-light shadow-2xl shadow-black"
+      >
         <h1 className="text-4_5xl text-center uppercase">login</h1>
+        <img src="/cross.svg" alt="cross" className="absolute right-0 mt-3 mr-6 size-2.5" />
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-0.5">
             <span>Email</span>
@@ -32,7 +48,7 @@ export function RootLogin() {
               type="email"
               id="email"
               placeholder="Enter your Email"
-              onChange={e => updateField( {email: e.target.value} )}
+              onChange={(e) => updateField({ ...form, email: e.target.value })}
             />
           </div>
 
@@ -44,14 +60,14 @@ export function RootLogin() {
               type="password"
               id="password"
               placeholder="Enter your Password"
-              onChange={e => updateField( {password: e.target.value} )}
+              onChange={(e) => updateField({ ...form, password: e.target.value })}
             />
           </div>
 
           <div className="flex justify-between">
             <div className="flex items-center gap-1">
               <div
-                onClick={() => updateField({ remember: !form.remember })}
+                onClick={() => updateField({ ...form, remember: !form.remember })}
                 className={clsx('rounded-x border-gray-850 size-4 border', form.remember && 'bg-red-500')}
               ></div>
               <span>Remember me</span>
@@ -59,7 +75,10 @@ export function RootLogin() {
             <span>Reset Password</span>
           </div>
         </div>
-        <button className="bg-blue-850 top-3 rounded-full px-6 py-1 text-base font-medium text-white uppercase">
+        <button
+          type="submit"
+          className="bg-blue-850 top-3 rounded-full px-6 py-1 text-base font-medium text-white uppercase"
+        >
           login
         </button>
 

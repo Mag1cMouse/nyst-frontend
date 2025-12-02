@@ -23,22 +23,29 @@ export function RootLogin(props: TProps) {
   const updateField = (field: TFormObject) => {
     setForm(field)
   }
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log(form)
+  }
 
   return (
     <div
-      className="absolute z-50 flex size-full flex-col items-center justify-center bg-black/30"
+      className="absolute z-10 flex size-full flex-col items-center justify-center bg-black/30"
       onClick={() => setIsShowModalWindow(false)}
     >
       <form
         action="submit"
-        onSubmit={(e) => {
-          e.preventDefault()
-          console.log(form)
-        }}
-        className="relative flex flex-col gap-3 rounded-lg bg-white px-30 py-6 text-sm font-light shadow-2xl shadow-black"
+        onSubmit={submitForm}
+        onClick={(e) => e.stopPropagation()}
+        className="relative z-20 flex flex-col gap-3 rounded-lg bg-white px-30 py-6 text-sm font-light shadow-2xl shadow-black"
       >
-        <h1 className="text-4_5xl text-center uppercase">login</h1>
-        <img src="/cross.svg" alt="cross" className="absolute right-0 mt-3 mr-6 size-2.5" />
+        <h1 className="text-4.5xl text-center uppercase">login</h1>
+        <img
+          src="/cross.svg"
+          alt="cross"
+          className="absolute right-0 mt-3 mr-6 size-2.5"
+          onClick={() => setIsShowModalWindow(false)}
+        />
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-0.5">
             <span>Email</span>

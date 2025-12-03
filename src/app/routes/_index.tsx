@@ -1,10 +1,5 @@
-import { RootLayout } from './(root)'
-
+import { RootLayout } from '../components'
 
 export default function IndexRoute() {
-  return (
-      <RootLayout>
-        
-      </RootLayout>
-  )
+  return <RootLayout></RootLayout>
 }

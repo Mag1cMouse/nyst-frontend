@@ -2,27 +2,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&display=swap');
 @import 'tailwindcss';
 
-html {
-  font-size: 1vw;
-}
-
 @theme {
-  --font-sans: 'Oswald', 'Cormorant Infant', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Oswald', ui-sans-serif, system-ui, sans-serif;
   --font-cormorant: 'Cormorant Infant', ui-sans-serif, system-ui, sans-serif;
 
+  --text-3_5xl: 1.875rem;
   --text-4_5xl: 2.5rem;
   --text-12xl: 9.1875rem;
 
+  --color-gray-50: #f7f6f6;
   --color-gray-150: #f7f6f6;
   --color-gray-850: #202020;
 
   --color-blue-850: #292e8c;
 
+  --color-yellow-450: #ffc000;
+
   --shadow-layout: 0px 4px 14px 0px #00000040;
+
+  --radius-2lg: 10px;
+
+  --shadow-right: inset 90px 0 80px -20px rgba(0, 0, 0, 0.8);
+  --shadow-bottom: 0px -66px 44px -2px rgba(0, 0, 0, 0.03) inset;
+
+  --breakpoint-md: 46rem;
 }
 
-@media screen and (max-width: 768px) {
+html {
+  font-size: calc(16 / 390 * 100vw);
+}
+
+@media screen and (min-width: 744px) {
   html {
-    font-size: 5vw;
+    font-size: calc(16 / 744 * 100vw);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 1vw;
   }
 }

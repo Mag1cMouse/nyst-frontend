@@ -1,0 +1,6 @@
+export { DescriptionCard } from './main.description-card'
+export { ServiceCard } from './main.service-card'
+export { Services } from './main.services'
+export { Slider } from './main.slider'
+export { VideoPlayer } from './main.video-player'
+export { ArrowCircle } from './main.arrowCircle'

@@ -1,2 +1,2 @@
 export { RootLayout, RootLogin } from './(root)'
-export { DescriptionCard, Slider } from './home'
+export { DescriptionCard, ServiceCard, Services, Slider, VideoPlayer } from './main'

@@ -1,18 +1,18 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 
 export function VideoPlayer() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const handlePlay = () => {
     if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.play()
+      setIsPlaying(true)
     }
-  };
+  }
 
   return (
-    <div className="relative h-120 w-full overflow-hidden flex flex-col">
+    <div className="relative flex h-68 w-full flex-col overflow-hidden md:h-120">
       {/* Видео-фон */}
       <video
         ref={videoRef}
@@ -23,21 +23,21 @@ export function VideoPlayer() {
       />
 
       {/* Контент поверх видео */}
-      <div className="relative gap-4 z-10 flex flex-col h-full w-full items-center justify-center p-6 text-center text-white">
-        <h2 className="text-4.5xl font-oswald w-140 font-semibold uppercase">
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 p-6 text-center text-white">
+        <h2 className="md:text-4.5xl font-oswald flex-wrap text-2xl font-semibold uppercase md:w-140">
           OctoberFAST Exotics at New York Safety Track
         </h2>
 
         {!isPlaying && (
           <button
             onClick={handlePlay}
-            className="lg:hidden uppercase font-oswald font-medium bg-black/30 rounded-full flex gap-2 pl-4 items-center"
+            className="font-oswald flex items-center gap-2 rounded-full bg-black/30 pl-4 font-medium uppercase lg:hidden"
           >
             play video
-            <img className="w-10 h-10" src="/play.svg" alt="play" />
+            <img className="h-10 w-10" src="/play.svg" alt="play" />
           </button>
         )}
       </div>
     </div>
-  );
+  )
 }

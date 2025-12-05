@@ -30,28 +30,29 @@ export function RootLogin(props: TProps) {
 
   return (
     <div
-      className="absolute z-10 flex size-full flex-col items-center justify-center bg-black/30"
+      className="md:absolute flex min-h-screen md:h-max size-full flex-col items-center justify-center bg-black/30 fixed z-300"
       onClick={() => setIsShowModalWindow(false)}
     >
       <form
         action="submit"
         onSubmit={submitForm}
         onClick={(e) => e.stopPropagation()}
-        className="relative z-20 flex flex-col gap-3 rounded-lg bg-white px-30 py-6 text-sm font-light shadow-2xl shadow-black"
+        className="relative size-full md:size-max z-20 h-full justify-center flex flex-col items-center gap-3 rounded-lg bg-white py-2.5 px-10 md:px-30 md:py-6 text-sm font-light shadow-2xl shadow-black"
       >
+        <img src="/logo.png" className='md:hidden block w-22' alt="" />
         <h1 className="text-4.5xl text-center uppercase">login</h1>
         <img
           src="/cross.svg"
           alt="cross"
-          className="absolute right-0 mt-3 mr-6 size-2.5"
+          className="absolute top-0 right-0 m-6 size-4 md:size-2.5"
           onClick={() => setIsShowModalWindow(false)}
         />
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-2 w-full">
+          <div className="flex flex-col gap-0.5 w-full">
             <span>Email</span>
             <input
               required
-              className="bg-gray-150 rounded-sm p-2 outline-none"
+              className="bg-gray-150 rounded-sm p-2 outline-none w-full"
               type="email"
               id="email"
               placeholder="Enter your Email"
@@ -75,7 +76,7 @@ export function RootLogin(props: TProps) {
             <div className="flex items-center gap-1">
               <div
                 onClick={() => updateField({ ...form, remember: !form.remember })}
-                className={clsx('rounded-x border-gray-850 size-4 border', form.remember && 'bg-red-500')}
+                  className={clsx('rounded-x border-gray-850 size-4 border', form.remember && 'bg-blue-850')}
               ></div>
               <span>Remember me</span>
             </div>
@@ -84,7 +85,7 @@ export function RootLogin(props: TProps) {
         </div>
         <button
           type="submit"
-          className="bg-blue-850 top-3 rounded-full px-6 py-1 text-base font-medium text-white uppercase"
+          className="bg-blue-850 top-3 rounded-full px-6 py-1 text-base font-medium text-white uppercase w-full"
         >
           login
         </button>

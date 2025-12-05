@@ -1,13 +1,8 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { RootLogin } from '../modal-window'
+import { MobileMenu } from '../modal-window/root.mobile-menu'
 import { RootContact } from './root.contact'
-
-const contacts = [
-  { label: 'location', srcOfImg: '/location.svg', text: '396 Zimmerman Rd, Harpersfield, NY, 12093' },
-  { label: 'phone', srcOfImg: '/phone.svg', text: '917-615-5355' },
-  { label: 'mail', srcOfImg: '/mail.svg', text: 'trackday@nyst.com' },
-]
 
 const headerNavLinks = [
   { label: 'experience', href: '#' },
@@ -26,21 +21,20 @@ const footerImageUrls = ['/facebook.svg', '/xter.svg', '/instagram.svg', '/youtu
 export function RootLayout(props: React.PropsWithChildren) {
   const { children } = props
   const [isShowModalWindow, setIsShowModalWindow] = useState(false)
+  const [isShowMobileMenu, setIsShowMobileMenu] = useState(false)
   return (
-    <>
+    <div className="bg-gray-150">
       {isShowModalWindow && <RootLogin setIsShowModalWindow={setIsShowModalWindow} />}
-
-      <header className="flex flex-col bg-gray-50 pb-6">
-        <div className="flex h-max justify-center gap-2 py-4.5">
-          {contacts.map(({ label, srcOfImg, text }, index) => (
-            <RootContact key={index} label={label} srcOfImg={srcOfImg} text={text} />
-          ))}
+      {isShowMobileMenu && <MobileMenu setIsShowMobileMenu={setIsShowMobileMenu} />}
+      <header className="sticky top-0 md:top-[-3.5rem] lg:top-[-4rem] z-150 flex flex-col pb-6">
+        <div className="hidden h-max justify-center gap-2 py-4.5 md:flex">
+          <RootContact />
         </div>
 
-        <div className="shadow-layout sticky top-0 bg-white">
-          <div className="flex items-center justify-between px-20 py-2.5">
+        <div className="bg-white">
+          <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-20">
             <img className="flex w-22 items-center" src="/logo.png" alt="logo" />
-            <div className="flex w-max uppercase lg:gap-20 font-oswald">
+            <div className="font-oswald hidden w-max uppercase md:flex lg:gap-20">
               {headerNavLinks.map(({ label, href }) => (
                 <NavLink key={label} to={href} className="px-2.5 py-1">
                   {label}
@@ -57,24 +51,36 @@ export function RootLayout(props: React.PropsWithChildren) {
                 }}
               />
               <img src="/shared.svg" alt="shared" className="size-5" />
+              <img
+                className="size-6.5 md:hidden"
+                src="/menu.svg"
+                alt="menu"
+                onClick={() => {
+                  setIsShowMobileMenu(!isShowMobileMenu)
+                }}
+              />
             </div>
           </div>
         </div>
       </header>
       <main>{children}</main>
-      <footer>
+      <footer className='bg-white'>
         <section className="flex flex-col items-center gap-6 py-6">
           <img src="/logo.png" className="h-12.5 w-22" alt="logo" />
-          <article className="flex flex-col items-center gap-4">
-            <div className="flex gap-5 text-lg/7 uppercase font-oswald">
+          <article className="relative flex w-full justify-between px-4 md:flex-col md:items-center md:gap-4">
+            <div className="font-oswald flex shrink-0 flex-col gap-5 text-base uppercase md:flex-row md:text-lg/7">
               {headerNavLinks.map(({ href, label }) => (
                 <NavLink key={label} to={href}>
                   {label}
                 </NavLink>
               ))}
             </div>
-            <img src="/bigLineDot.svg" alt="bigLineDot" />
-            <div className="flex gap-5 text-lg/7 uppercase font-oswald">
+            <img
+              src="/bigLineDot.svg"
+              alt="bigLineDot"
+              className="absolute top-24 left-25 w-50 rotate-270 md:static md:rotate-0"
+            />
+            <div className="font-oswald flex flex-col gap-5 text-base uppercase md:flex-row md:text-lg/7">
               {footerNavLinks.map(({ href, label }) => (
                 <NavLink key={label} to={href}>
                   {label}
@@ -82,11 +88,9 @@ export function RootLayout(props: React.PropsWithChildren) {
               ))}
             </div>
           </article>
-          <article className="flex flex-col items-center gap-6">
-            <div className="flex gap-4.5">
-              {contacts.map(({ label, srcOfImg, text }, index) => (
-                <RootContact key={index} label={label} srcOfImg={srcOfImg} text={text} />
-              ))}
+          <article className="flex w-full flex-col items-center gap-6 px-4">
+            <div className="flex w-full flex-col gap-4.5 md:w-max md:flex-row">
+              <RootContact />
             </div>
             <div className="flex gap-2">
               {footerImageUrls.map((src) => (
@@ -96,6 +100,6 @@ export function RootLayout(props: React.PropsWithChildren) {
           </article>
         </section>
       </footer>
-    </>
+    </div>
   )
 }

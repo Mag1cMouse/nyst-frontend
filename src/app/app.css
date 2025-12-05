@@ -32,6 +32,11 @@ html {
   font-size: calc(16 / 390 * 100vw);
 }
 
+img {
+  user-select: none;
+  
+}
+
 @media screen and (min-width: 744px) {
   html {
     font-size: calc(16 / 744 * 100vw);

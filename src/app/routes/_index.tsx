@@ -99,15 +99,15 @@ const serviceCardArray = [
 export default function IndexRoute() {
   return (
     <RootLayout>
-      <div className="bg-gray-50 px-20">
+      <div className="bg-gray-50 px-4 md:px-7.5 lg:px-20">
         <Slider />
       </div>
       {descriptionCardsArray.map((item, index) => (
         <Fragment key={index}>
           {index === 2 && <ServiceCard item={serviceCardArray[0]} />}
-          {index === 4 && <ServiceCard item={serviceCardArray[1]} />}
-          {index === 3 && <VideoPlayer />}
           <DescriptionCard item={item} index={index} />
+          {index === 3 && <VideoPlayer />}
+          {index === 4 && <ServiceCard item={serviceCardArray[1]} />}
         </Fragment>
       ))}
       <Services />

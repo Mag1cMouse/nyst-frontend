@@ -27,20 +27,20 @@ export function DescriptionCard(props: TProps) {
   return (
     <div
       className={clsx(
-        'flex w-full justify-between gap-5 md:flex-col-reverse md:px-7.5 md:py-15 lg:flex-row lg:items-center lg:p-20',
-        index % 2 === 0 ? 'flex-row-reverse bg-gray-50' : '',
+        'flex w-full flex-col-reverse justify-between gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:items-center lg:p-20',
+        index % 2 === 0 ? 'flex-col-reverse lg:flex-row-reverse' : 'bg-white',
       )}
     >
-      <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2 " />
-      <div className="font-oswald flex flex-col gap-6 lg:w-1/2 ">
-        <div className="flex gap-1.5">
+      <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2" />
+      <div className="font-oswald flex flex-col gap-6 lg:w-1/2">
+        <div className="flex items-center gap-1.5">
           <img src={item.finishSvg} alt={item.finishSvg} className="size-6 text-black" />
-          <img src={item.lineSvg} alt={item.lineSvg} className="lg:w-15 md:w-15" />
+          <img src={item.lineSvg} alt={item.lineSvg} className="w-15 md:w-15 lg:w-15" />
           <span className="uppercase">{item.text}</span>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h2 className="text-4.5xl/15 font-semibold uppercase">{item.title}</h2>
+          <h2 className="md:text-4.5xl/15 text-3xl font-semibold uppercase">{item.title}</h2>
           <p className="font-light">{item.description}</p>
         </div>
 

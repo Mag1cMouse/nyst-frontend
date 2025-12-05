@@ -31,16 +31,16 @@ export function DescriptionCard(props: TProps) {
         index % 2 === 0 ? 'flex-row-reverse bg-gray-50' : '',
       )}
     >
-      <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2" />
-      <div className="font-oswald flex flex-col gap-6 lg:w-1/2">
+      <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2 " />
+      <div className="font-oswald flex flex-col gap-6 lg:w-1/2 ">
         <div className="flex gap-1.5">
           <img src={item.finishSvg} alt={item.finishSvg} className="size-6 text-black" />
-          <img src={item.lineSvg} alt={item.lineSvg} className="lg:w-15 md:w-3" />
+          <img src={item.lineSvg} alt={item.lineSvg} className="lg:w-15 md:w-15" />
           <span className="uppercase">{item.text}</span>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h2 className="lg:text-4.5xl/15 font-semibold uppercase">{item.title}</h2>
+          <h2 className="text-4.5xl/15 font-semibold uppercase">{item.title}</h2>
           <p className="font-light">{item.description}</p>
         </div>
 

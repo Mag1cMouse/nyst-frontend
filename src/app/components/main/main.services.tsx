@@ -47,22 +47,23 @@ type TServicesArray = {
 
 export function Services() {
   return (
-    <div className="flex flex-wrap justify-center gap-5 md:px-4 md:py-6 lg:p-20 text-white">
+    <div className="flex flex-wrap justify-center gap-5 text-white md:px-4 md:py-6 lg:p-20">
       {servicesArray.map((item, index) => (
         <div
           key={index}
-          className="flex h-120 basis-[calc(50%-0.625rem)] flex-col justify-end gap-6 rounded-xl bg-cover bg-no-repeat px-4 py-6"
+          className="relative flex basis-[calc(50%-0.625rem)] flex-col justify-end rounded-xl bg-cover bg-no-repeat px-4 py-6 md:h-74.5 md:gap-4.5 lg:h-120 lg:gap-6  font-oswald"
           style={{ backgroundImage: `url(${item.backgroundImg})` }}
         >
-          <div className="flex flex-col gap-2">
+          <div className="pointer-events-none absolute bottom-0 left-0 h-2/3 w-full rounded-xl bg-gradient-to-t from-black to-transparent" />
+          <div className="flex flex-col gap-2 z-10">
             <h2 className="md:text-3.5xl lg:text-4.5xl font-semibold uppercase">{item.title}</h2>
-            <p className="md:text-base font-light">{item.description}</p>
+            <p className="font-light md:text-base ">{item.description}</p>
           </div>
 
-          <div className="text-yellow-450 flex items-center gap-4">
+          <div className="text-yellow-450 flex items-center gap-4 z-10">
             <div className="flex items-center gap-1">
               <img className="size-6" src={item.calendarSvg} alt={item.calendarSvg} />
-              <span className="md:text-base  font-medium text-white uppercase">{item.link}</span>
+              <span className="font-medium text-white uppercase md:text-base">{item.link}</span>
             </div>
             <ArrowCircle />
           </div>

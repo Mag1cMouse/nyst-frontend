@@ -14,11 +14,13 @@ export function ServiceCard(props: TProps) {
   const { item } = props
   return (
     <section
-      className="flex flex-col items-center justify-center gap-6 bg-center bg-no-repeat px-19 py-8 text-white"
+      className="flex flex-col bg-cover items-center justify-center gap-6 bg-center bg-no-repeat px-7.5 py-8 font-oswald text-white "
       style={{ backgroundImage: `url(${item.urlOfBgImage})` }}
     >
-      <h2 className="text-4.5xl/15 max-w-320 text-center font-semibold uppercase">{item.header}</h2>
-      <p className="text-2xl/6.5">{item.text}</p>
+      <div className='gap-2'>
+        <h2 className="text-4.5xl/15 max-w-320 text-center font-semibold uppercase">{item.header}</h2>
+        <p className="text-2xl/6.5">{item.text}</p>
+      </div>
       <button className="text-yellow-450 flex items-center gap-4 leading-4.5">
         {item.additionalImage && <img className="size-6" src={item.additionalImage} alt="additionalImage" />}
         <span className="text-white uppercase">{item.label}</span>

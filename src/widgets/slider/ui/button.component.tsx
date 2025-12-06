@@ -6,7 +6,7 @@ type TProps = React.PropsWithChildren<{
   withFirstImg?: boolean
 }>
 
-export function SliderButton(props: TProps) {
+export function Button(props: TProps) {
   const { icon, svg, withFirstImg, children } = props
   return (
     <>

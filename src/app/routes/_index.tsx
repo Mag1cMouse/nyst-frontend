@@ -1,5 +1,8 @@
+import { DescriptionCard, ServiceCard, Services, Video } from '@shared/ui'
+import { SliderUi } from '@widgets/slider'
+import clsx from 'clsx'
 import { Fragment } from 'react/jsx-runtime'
-import { DescriptionCard, RootLayout, ServiceCard, Services, Slider, VideoPlayer } from '~/components'
+import { RootLayout } from '~/components'
 
 const descriptionCardsArray = [
   {
@@ -96,21 +99,76 @@ const serviceCardArray = [
   },
 ]
 
+const servicesArray = [
+  {
+    title: 'Track Day',
+    description:
+      'Learn to brake later, corner faster, and ride with total control. After a track day, you’ll feel like a whole new rider or driver.',
+    calendarSvg: 'calendarWhite.svg',
+    link: 'Sign Up',
+    arrowCircle: '/arrowCircle',
+    backgroundImg: '/cars.jpg',
+  },
+  {
+    title: 'School',
+    description: 'Take Your Riding to the Next Level',
+    calendarSvg: 'calendarWhite.svg',
+    link: 'Sign Up',
+    arrowCircle: '/arrowCircle',
+    backgroundImg: '/peoples.jpg',
+  },
+  {
+    title: 'Racing',
+    description: 'Motocycle club Racing at NYST',
+    calendarSvg: 'calendarWhite.svg',
+    link: 'discover more',
+    arrowCircle: '/arrowCircle',
+    backgroundImg: '/bike.jpg',
+  },
+  {
+    title: 'Corporate event',
+    description: 'Excitement Meets Relaxation',
+    calendarSvg: 'calendarWhite.svg',
+    link: 'discover more',
+    arrowCircle: '/arrowCircle',
+    backgroundImg: '/bike.jpg',
+  },
+]
+
 export default function IndexRoute() {
   return (
     <RootLayout>
       <div className="bg-gray-50 px-4 md:px-7.5 lg:px-20">
-        <Slider />
+        <SliderUi.Slider></SliderUi.Slider>
       </div>
       {descriptionCardsArray.map((item, index) => (
         <Fragment key={index}>
-          {index === 2 && <ServiceCard item={serviceCardArray[0]} />}
-          <DescriptionCard item={item} index={index} />
-          {index === 3 && <VideoPlayer />}
-          {index === 4 && <ServiceCard item={serviceCardArray[1]} />}
+          {index === 2 && (
+            <ServiceCard
+              className="font-oswald flex flex-col items-center justify-center gap-6 bg-cover bg-no-repeat px-4 py-8 text-white md:px-7.5 lg:bg-center"
+              item={serviceCardArray[0]}
+            />
+          )}
+          <DescriptionCard
+            className={clsx(
+              'flex w-full flex-col-reverse justify-between gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:items-center lg:p-20',
+              index % 2 === 0 ? 'flex-col-reverse lg:flex-row-reverse' : 'bg-white',
+            )}
+            item={item}
+          />
+          {index === 3 && <Video className="relative flex h-68 w-full flex-col overflow-hidden md:h-120" />}
+          {index === 4 && (
+            <ServiceCard
+              className="font-oswald flex flex-col items-center justify-center gap-6 bg-cover bg-no-repeat px-4 py-8 text-white md:px-7.5 lg:bg-center"
+              item={serviceCardArray[1]}
+            />
+          )}
         </Fragment>
       ))}
-      <Services />
+      <Services
+        className="bg-gray-150 flex flex-col flex-wrap justify-center gap-4 px-4 py-10 text-white md:flex-row md:gap-5 md:py-15 lg:p-20"
+        servicesArray={servicesArray}
+      />
     </RootLayout>
   )
 }

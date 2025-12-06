@@ -5,7 +5,17 @@ import svgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), svgr()],
+  plugins: [
+    tailwindcss(),
+    reactRouter(),
+    tsconfigPaths(),
+    svgr({
+      svgrOptions: {
+        exportType: 'default',
+      },
+      include: '**/*.svg?react',
+    }),
+  ],
   server: {
     cors: true,
     host: '0.0.0.0',

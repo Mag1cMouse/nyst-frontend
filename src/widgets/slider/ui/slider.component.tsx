@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { SliderButton } from './main.slider-button'
+import { Button } from './button.component'
 
 type TSlide = {
   backgroundUrl: string
@@ -72,22 +72,27 @@ const slides: TSlide[] = [
 ]
 
 export function Slider() {
-  const [current, setCurrent] = useState(0)
+  const [currentSliderCard, setCurrentSliderCard] = useState(0)
 
-  const stepLeft = () => setCurrent((prev) => (prev !== 0 ? Math.max(prev - 1, 0) : slides.length - 1))
-  const stepRight = () => setCurrent((prev) => (prev !== slides.length - 1 ? Math.max(prev + 1, 0) : 0))
+  const sliderStepToLeft = () =>
+    setCurrentSliderCard((prev) => (prev !== 0 ? Math.max(prev - 1, 0) : slides.length - 1))
+
+  const sliderStepToRight = () =>
+    setCurrentSliderCard((prev) => (prev !== slides.length - 1 ? Math.max(prev + 1, 0) : 0))
 
   useEffect(() => {
-    setInterval(() => setCurrent((prev) => (prev !== slides.length - 1 ? Math.max(prev + 1, 0) : 0)), 3000)
+    setInterval(
+      () => setCurrentSliderCard((prev) => (prev !== slides.length - 1 ? Math.max(prev + 1, 0) : 0)),
+      3000,
+    )
   }, [])
-
   return (
-    <div className="relative h-160 w-full z-10 overflow-hidden rounded-2xl bg-gray-50 select-none md:h-183.5">
+    <div className="relative z-10 h-160 w-full overflow-hidden rounded-2xl bg-gray-50 select-none md:h-183.5">
       {/* Слайды */}
       <div
         className="flex h-full transition-transform duration-500"
         style={{
-          transform: `translateX(-${current * 100}%)`,
+          transform: `translateX(-${currentSliderCard * 100}%)`,
         }}
       >
         {slides.map((slide, index) => (
@@ -137,7 +142,7 @@ export function Slider() {
                       {slide.title}
                     </span>
                     {(index === 1 || index === 4) && (
-                      <SliderButton icon={slide.button.icon}>{slide.button.label}</SliderButton>
+                      <Button icon={slide.button.icon}>{slide.button.label}</Button>
                     )}
                   </div>
                   {slide.description && (
@@ -152,16 +157,16 @@ export function Slider() {
                         {slide.description}
                       </span>
                       {(index === 2 || index === 3) && (
-                        <SliderButton icon={slide.button.icon}>{slide.button.label}</SliderButton>
+                        <Button icon={slide.button.icon}>{slide.button.label}</Button>
                       )}
                     </div>
                   )}
                 </div>
 
                 {index === 0 && (
-                  <SliderButton icon={slide.button.icon} withFirstImg svg={slide.button.svg}>
+                  <Button icon={slide.button.icon} withFirstImg svg={slide.button.svg}>
                     {slide.button.label}
-                  </SliderButton>
+                  </Button>
                 )}
               </div>
             </div>
@@ -171,13 +176,13 @@ export function Slider() {
 
       {/* Кнопки */}
       <button
-        onClick={stepLeft}
+        onClick={sliderStepToLeft}
         className="absolute bottom-4 left-4 -translate-y-1/2 rounded-sm border border-white p-0.5 transition md:left-7.5 lg:left-27"
       >
         <img className="size-5 rotate-180" src="/arrow.svg" alt="" />
       </button>
       <button
-        onClick={stepRight}
+        onClick={sliderStepToRight}
         className="absolute right-4 bottom-4 -translate-y-1/2 rounded-sm border border-white p-0.5 transition md:right-7.5 lg:right-27"
       >
         <img className="size-5" src="/arrow.svg" alt="" />
@@ -188,11 +193,11 @@ export function Slider() {
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
-            className={`flex size-2 justify-end rounded-full bg-white transition ${current === i && 'w-9.5 transition-all duration-300'}`}
+            onClick={() => setCurrentSliderCard(i)}
+            className={`flex size-2 justify-end rounded-full bg-white transition ${currentSliderCard === i && 'w-9.5 transition-all duration-300'}`}
           >
             <div
-              className={`${current === i ? 'bg-yellow-450 h-full w-4.75 rounded-full transition-all duration-300' : 'bg-white transition-all duration-300'}`}
+              className={`${currentSliderCard === i ? 'bg-yellow-450 h-full w-4.75 rounded-full transition-all duration-300' : 'bg-white transition-all duration-300'}`}
             />
           </button>
         ))}

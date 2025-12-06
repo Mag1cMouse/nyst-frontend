@@ -1,6 +1,10 @@
-import clsx from 'clsx'
+import type { SharedTypes } from '@shared'
 import { Link } from 'react-router'
-import { ArrowCircle } from './main.arrowCircle'
+import { CircleArrow } from '../circle-arrow'
+
+type Props = SharedTypes.Ui.PropsWithClassName<{
+  item: TDescriptionCardArray
+}>
 
 type TDescriptionCardArray = {
   text: string
@@ -17,20 +21,11 @@ type TDescriptionCardArray = {
   }
 }
 
-type TProps = {
-  item: TDescriptionCardArray
-  index: number
-}
+export const DescriptionCard = (props: Props) => {
+  const { className, item, ...restProps } = props
 
-export function DescriptionCard(props: TProps) {
-  const { item, index } = props
   return (
-    <div
-      className={clsx(
-        'flex w-full flex-col-reverse justify-between gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:items-center lg:p-20',
-        index % 2 === 0 ? 'flex-col-reverse lg:flex-row-reverse' : 'bg-white',
-      )}
-    >
+    <div className={className} {...restProps}>
       <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2" />
       <div className="font-oswald flex flex-col gap-6 lg:w-1/2">
         <div className="flex items-center gap-1.5">
@@ -49,7 +44,7 @@ export function DescriptionCard(props: TProps) {
             <img src={item.button.svg} alt="" className="size-5" />
             <Link to={item.button.link}>{item.button.text}</Link>
           </div>
-          <ArrowCircle />
+          <CircleArrow className='size-8 stroke-current'/>
         </div>
       </div>
     </div>

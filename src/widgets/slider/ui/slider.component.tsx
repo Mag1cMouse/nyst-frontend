@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { Button } from './button.component'
+import { CircleArrow } from '@shared/ui'
 
 type TSlide = {
   backgroundUrl: string
@@ -10,7 +10,6 @@ type TSlide = {
   button: {
     label: string
     link: string
-    icon: string
     svg?: string
   }
 }
@@ -24,7 +23,6 @@ const slides: TSlide[] = [
     button: {
       label: 'Start your engines',
       link: '/start',
-      icon: '/arrowCircle.svg',
       svg: '/finishWhite.svg',
     },
   },
@@ -35,7 +33,6 @@ const slides: TSlide[] = [
     button: {
       label: 'view shedule',
       link: '/start',
-      icon: '/arrowCircle.svg',
     },
   },
   {
@@ -46,7 +43,6 @@ const slides: TSlide[] = [
     button: {
       label: 'view shedule',
       link: '/start',
-      icon: '/arrowCircle.svg',
     },
   },
   {
@@ -56,7 +52,7 @@ const slides: TSlide[] = [
     button: {
       label: 'view shedule',
       link: '/start',
-      icon: '/arrowCircle.svg',
+
     },
   },
   {
@@ -66,7 +62,6 @@ const slides: TSlide[] = [
     button: {
       label: 'view shedule',
       link: '/start',
-      icon: '/arrowCircle.svg',
     },
   },
 ]
@@ -142,7 +137,7 @@ export function Slider() {
                       {slide.title}
                     </span>
                     {(index === 1 || index === 4) && (
-                      <Button icon={slide.button.icon}>{slide.button.label}</Button>
+                      <CircleArrow svgClassName='size-4' link={slide.button.link} text={slide.button.label}/>
                     )}
                   </div>
                   {slide.description && (
@@ -157,16 +152,14 @@ export function Slider() {
                         {slide.description}
                       </span>
                       {(index === 2 || index === 3) && (
-                        <Button icon={slide.button.icon}>{slide.button.label}</Button>
+                       <CircleArrow svgClassName='size-4' link={slide.button.link} text={slide.button.label}/>
                       )}
                     </div>
                   )}
                 </div>
 
                 {index === 0 && (
-                  <Button icon={slide.button.icon} withFirstImg svg={slide.button.svg}>
-                    {slide.button.label}
-                  </Button>
+                 <CircleArrow svgClassName='size-4' link={slide.button.link} text={slide.button.label}/>
                 )}
               </div>
             </div>

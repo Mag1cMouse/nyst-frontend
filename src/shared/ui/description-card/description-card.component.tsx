@@ -29,7 +29,7 @@ export const DescriptionCard = (props: Props) => {
       <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2" />
       <div className="font-oswald flex flex-col gap-6 lg:w-1/2">
         <div className="flex items-center gap-1.5">
-          <Subtitle text={item.text} className='flex gap-1.5 w-full'/>
+          <Subtitle text={item.text} className="flex w-full gap-1.5" />
         </div>
 
         <div className="flex flex-col gap-2">
@@ -42,8 +42,8 @@ export const DescriptionCard = (props: Props) => {
           link={item.button.link}
           text={item.button.text}
           svg={item.button.svg}
-          textClassName='font-oswald text-black font-medium'
-          svgClassName={'size-5'}
+          textClassName="text-black"
+          svgClassName="size-5"
           className="text-blue-850 flex items-center gap-2 font-medium uppercase"
         />
       </div>

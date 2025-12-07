@@ -106,32 +106,32 @@ const servicesArray = [
       'Learn to brake later, corner faster, and ride with total control. After a track day, you’ll feel like a whole new rider or driver.',
     calendarSvg: 'calendarWhite.svg',
     link: 'Sign Up',
-    arrowCircle: '/arrowCircle',
     backgroundImg: '/cars.jpg',
+    arrowCircle: true,
   },
   {
     title: 'School',
     description: 'Take Your Riding to the Next Level',
     calendarSvg: 'calendarWhite.svg',
     link: 'Sign Up',
-    arrowCircle: '/arrowCircle',
     backgroundImg: '/peoples.jpg',
+    arrowCircle: true,
   },
   {
     title: 'Racing',
     description: 'Motocycle club Racing at NYST',
     calendarSvg: 'calendarWhite.svg',
     link: 'discover more',
-    arrowCircle: '/arrowCircle',
     backgroundImg: '/bike.jpg',
+    arrowCircle: true,
   },
   {
     title: 'Corporate event',
     description: 'Excitement Meets Relaxation',
     calendarSvg: 'calendarWhite.svg',
     link: 'discover more',
-    arrowCircle: '/arrowCircle',
     backgroundImg: '/bike.jpg',
+    arrowCircle: true,
   },
 ]
 
@@ -178,6 +178,7 @@ export default function IndexRoute() {
         </Fragment>
       ))}
       <Services
+        imgClassName="font-oswald relative flex h-74.5 flex-col justify-end rounded-xl bg-cover bg-no-repeat px-4 py-6 md:basis-[calc(50%-0.625rem)] md:gap-4.5 lg:h-120 lg:gap-6"
         className="bg-gray-150 flex flex-col flex-wrap justify-center gap-4 px-4 py-10 text-white md:flex-row md:gap-5 md:py-15 lg:p-20"
         servicesArray={servicesArray}
       />

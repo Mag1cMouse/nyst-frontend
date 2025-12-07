@@ -38,7 +38,7 @@ export function RootLayout(props: React.PropsWithChildren) {
     <div className="bg-gray-150">
       {isShowModalWindow && <RootLogin setIsShowModalWindow={setIsShowModalWindow} />}
       {isShowMobileMenu && <MobileMenu setIsShowMobileMenu={setIsShowMobileMenu} />}
-      <header className="sticky top-0 z-150 flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-rem] ">
+      <header className="sticky top-0 z-150 flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-rem]">
         <Contacts className="hidden h-max justify-center gap-2 py-4.5 md:flex" />
         <div className="bg-white">
           <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-20">
@@ -71,17 +71,20 @@ export function RootLayout(props: React.PropsWithChildren) {
             </div>
           </div>
         </div>
-        <span className=" font-oswald px-20 pt-6 font-light flex gap-1">
-          {formatted.map((seg, index) => {
-            return (
-              <span key={index}>
-                <span className={index === formatted.length - 1 ? 'font-normal' : ''}>{seg}</span>
-                {index < formatted.length - 1 && ' > '}
-              </span>
-            )
-          })}
-        </span>
+        {useLocation().pathname !== '/' && (
+          <span className="font-oswald top-33 flex gap-1 px-20 pt-6 font-light">
+            {formatted.map((seg, index) => {
+              return (
+                <span key={index}>
+                  <span className={index === formatted.length - 1 ? 'font-normal' : ''}>{seg}</span>
+                  {index < formatted.length - 1 && ' > '}
+                </span>
+              )
+            })}
+          </span>
+        )}
       </header>
+
       <main>{children}</main>
       <footer className="bg-white">
         <section className="flex flex-col items-center gap-6 py-6">

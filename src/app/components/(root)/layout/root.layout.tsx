@@ -1,11 +1,11 @@
 import { Contacts } from '@shared/ui'
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router'
+import { NavLink, useLocation } from 'react-router'
 import { RootLogin } from '../modal-window'
 import { MobileMenu } from '../modal-window/root.mobile-menu'
 
 const headerNavLinks = [
-  { label: 'experience', href: '#' },
+  { label: 'experience', href: '/experience' },
   { label: 'event registration', href: '#' },
   { label: 'membership', href: '#' },
   { label: 'rentals', href: '#' },
@@ -23,6 +23,9 @@ export function RootLayout(props: React.PropsWithChildren) {
   const [isShowModalWindow, setIsShowModalWindow] = useState(false)
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false)
 
+  const location = useLocation().pathname.split('/').filter(Boolean)
+  const formatted = ['MAIN', ...location.map((s) => s.toUpperCase())]
+
   useEffect(() => {
     if (isShowModalWindow || isShowMobileMenu) {
       document.body.style.overflow = 'hidden'
@@ -30,12 +33,12 @@ export function RootLayout(props: React.PropsWithChildren) {
       document.body.style.overflow = ''
     }
   }, [isShowModalWindow, isShowMobileMenu])
-	
+
   return (
     <div className="bg-gray-150">
       {isShowModalWindow && <RootLogin setIsShowModalWindow={setIsShowModalWindow} />}
       {isShowMobileMenu && <MobileMenu setIsShowMobileMenu={setIsShowMobileMenu} />}
-      <header className="sticky top-0 z-150 flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-4rem]">
+      <header className="sticky top-0 z-150 flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-rem] ">
         <Contacts className="hidden h-max justify-center gap-2 py-4.5 md:flex" />
         <div className="bg-white">
           <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-20">
@@ -68,6 +71,16 @@ export function RootLayout(props: React.PropsWithChildren) {
             </div>
           </div>
         </div>
+        <span className=" font-oswald px-20 pt-6 font-light flex gap-1">
+          {formatted.map((seg, index) => {
+            return (
+              <span key={index}>
+                <span className={index === formatted.length - 1 ? 'font-normal' : ''}>{seg}</span>
+                {index < formatted.length - 1 && ' > '}
+              </span>
+            )
+          })}
+        </span>
       </header>
       <main>{children}</main>
       <footer className="bg-white">

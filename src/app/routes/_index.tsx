@@ -135,6 +135,11 @@ const servicesArray = [
   },
 ]
 
+const videoArr = {
+  srcVideo: '/homeVideo.mp4',
+  title: 'OctoberFAST Exotics at New York Safety Track',
+}
+
 export default function IndexRoute() {
   return (
     <RootLayout>
@@ -156,7 +161,14 @@ export default function IndexRoute() {
             )}
             item={item}
           />
-          {index === 3 && <Video className="relative flex h-68 w-full flex-col overflow-hidden md:h-120" />}
+          {index === 3 && (
+            <Video
+              item={videoArr}
+              h2ClassName="md:text-4.5xl font-oswald flex-wrap text-2xl font-semibold uppercase md:w-140"
+              divFullClassName="relative z-10 flex size-full flex-col items-center justify-center gap-4 p-6 text-center text-white"
+              className="relative flex h-68 w-full flex-col overflow-hidden md:h-120"
+            />
+          )}
           {index === 4 && (
             <ServiceCard
               className="font-oswald flex flex-col items-center justify-center gap-6 bg-cover bg-no-repeat px-4 py-8 text-white md:px-7.5 lg:bg-center"

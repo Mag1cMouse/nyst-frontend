@@ -1,6 +1,6 @@
 import type { SharedTypes } from '@shared'
-import { Link } from 'react-router'
 import { CircleArrow } from '../circle-arrow'
+import { Subtitle } from '../subtitle'
 
 type Props = SharedTypes.Ui.PropsWithClassName<{
   item: TDescriptionCardArray
@@ -29,9 +29,7 @@ export const DescriptionCard = (props: Props) => {
       <img src={item.img} alt="" className="rounded-2lg w-full lg:w-1/2" />
       <div className="font-oswald flex flex-col gap-6 lg:w-1/2">
         <div className="flex items-center gap-1.5">
-          <img src={item.finishSvg} alt={item.finishSvg} className="size-6 text-black" />
-          <img src={item.lineSvg} alt={item.lineSvg} className="w-15 md:w-15 lg:w-15" />
-          <span className="uppercase">{item.text}</span>
+          <Subtitle text={item.text} className='flex gap-1.5 w-full'/>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -39,13 +37,15 @@ export const DescriptionCard = (props: Props) => {
           <p className="font-light">{item.description}</p>
         </div>
 
-        <div className="text-blue-850 flex items-center gap-4">
-          <div className="flex items-center gap-2 font-medium text-black uppercase">
-            <img src={item.button.svg} alt="" className="size-5" />
-            <Link to={item.button.link}>{item.button.text}</Link>
-          </div>
-          <CircleArrow className='size-8 stroke-current'/>
-        </div>
+        <div className="flex items-center gap-4"></div>
+        <CircleArrow
+          link={item.button.link}
+          text={item.button.text}
+          svg={item.button.svg}
+          textClassName='font-oswald text-black font-medium'
+          svgClassName={'size-5'}
+          className="text-blue-850 flex items-center gap-2 font-medium uppercase"
+        />
       </div>
     </div>
   )

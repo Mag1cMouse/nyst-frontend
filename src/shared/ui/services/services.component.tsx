@@ -31,13 +31,14 @@ export const Services = (props: Props) => {
             <p className="font-light md:text-base">{item.description}</p>
           </div>
 
-          <div className="text-yellow-450 z-10 flex items-center gap-4">
-            <div className="flex items-center gap-1">
-              <img className="size-6" src={item.calendarSvg} alt={item.calendarSvg} />
-              <span className="font-medium text-white uppercase md:text-base">{item.link}</span>
-            </div>
-            <CircleArrow className="size-8 stroke-current" />
-          </div>
+          <CircleArrow
+            svgClassName="size-6"
+            textClassName="text-white uppercase"
+            svg={item.calendarSvg}
+            link={item.link}
+            text={item.link}
+            className="text-yellow-450 z-10 flex items-center gap-4"
+          />
         </div>
       ))}
     </div>

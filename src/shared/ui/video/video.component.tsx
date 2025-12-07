@@ -1,9 +1,22 @@
 import type { SharedTypes } from '@shared'
 import { useRef, useState } from 'react'
 
-type Props = SharedTypes.Ui.PropsWithClassName
+type TVideoItem = {
+  srcVideo: string
+  title: string
+  subTitle?: string
+  text?: string
+}
+
+type Props = SharedTypes.Ui.PropsWithClassName<{
+  item: TVideoItem
+  h2ClassName?: string
+  divFullClassName: string
+}>
 
 export const Video = (props: Props) => {
+  const { className, item, h2ClassName, divFullClassName, ...restProps } = props
+
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
@@ -15,22 +28,28 @@ export const Video = (props: Props) => {
     }
   }
 
-  const { className, ...restProps } = props
   return (
     <div className={className} {...restProps}>
       {/* Видео */}
       <video
         ref={videoRef}
-        className="absolute top-0 left-0 z-0 h-full w-full object-cover"
-        src="/homeVideo.mp4"
+        className="absolute top-0 left-0 z-0 size-full object-cover"
+        src={item.srcVideo}
         loop
         muted
+        // autoPlay
       />
 
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 p-6 text-center text-white">
-        <h2 className="md:text-4.5xl font-oswald flex-wrap text-2xl font-semibold uppercase md:w-140">
-          OctoberFAST Exotics at New York Safety Track
-        </h2>
+      <div className={divFullClassName}>
+        <div className="flex flex-col">
+          {item.subTitle && <div className="font-oswald text-4.5xl font-semibold">{item.subTitle}</div>}
+          <h2
+            className={h2ClassName}
+          >
+            {item.title}
+          </h2>
+          {item.text && <div className="font-cormorant text-3.5xl font-bold">{item.text}</div>}
+        </div>
 
         {!isPlayingVideo && (
           <button

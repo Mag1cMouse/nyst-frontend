@@ -11,10 +11,7 @@ const headerNavLinks = [
   { label: 'rentals', href: '#' },
 ]
 
-const footerNavLinks = [
-  { label: 'Local Experiences', href: '#' },
-  { label: 'Terms and privacy', href: '#' },
-]
+const footerNavLinks = [{ label: 'Local Experiences', href: '#' }]
 
 const footerImageUrls = ['/facebook.svg', '/xter.svg', '/instagram.svg', '/youtube.svg', '/google.svg']
 
@@ -71,20 +68,17 @@ export function RootLayout(props: React.PropsWithChildren) {
             </div>
           </div>
         </div>
-        {useLocation().pathname !== '/' && (
-          <span className="font-oswald top-33 flex gap-1 px-20 pt-6 font-light">
-            {formatted.map((seg, index) => {
-              return (
-                <span key={index}>
-                  <span className={index === formatted.length - 1 ? 'font-normal' : ''}>{seg}</span>
-                  {index < formatted.length - 1 && ' > '}
-                </span>
-              )
-            })}
-          </span>
-        )}
-      </header>
-
+				</header>
+      {useLocation().pathname !== '/' && (
+        <span className="font-oswald flex gap-1 px-20 pb-6 font-light">
+          {formatted.map((seg, index) => (
+            <span key={index}>
+              <span className={index === formatted.length - 1 ? 'font-normal' : ''}>{seg}</span>
+              {index < formatted.length - 1 && ' > '}
+            </span>
+          ))}
+        </span>
+      )}
       <main>{children}</main>
       <footer className="bg-white">
         <section className="flex flex-col items-center gap-6 py-6">

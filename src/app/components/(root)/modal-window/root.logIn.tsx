@@ -31,7 +31,7 @@ export function RootLogin(props: TProps) {
 
   return (
     <div
-      className="fixed z-300 flex size-full min-h-screen flex-col items-center justify-center bg-black/40 md:absolute md:h-max"
+      className="fixed z-300 flex size-full min-h-screen flex-col items-center justify-center bg-black/40 md:fixed md:h-max"
       onClick={() => setIsShowModalWindow(false)}
     >
       <form

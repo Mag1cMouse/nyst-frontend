@@ -2,43 +2,39 @@ import type { SharedTypes } from '@shared'
 import { Link } from 'react-router'
 
 type Props = SharedTypes.Ui.PropsWithClassName<{
+  className?: string
   svg?: string
   text?: string
-  link?: string
+  link: string
   svgClassName?: string
   textClassName?: string
 }>
 
-export const CircleArrow = ({
-  className = 'flex gap-2 items-center shrink-0 text-yellow-450',
-  svg,
-  text,
-  link = '#',
-  svgClassName,
-  textClassName = 'font-oswald font-medium text-white uppercase',
-}: Props) => {
-  const elements = [
-    svg && <img key="img" className={svgClassName} src={svg} alt="icon" />,
-    text && (
-      <span key="text" className={textClassName}>
-        {text}
-      </span>
-    ),
-    <svg
-      key="svg"
-      className="size-8 stroke-current"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="16" cy="16" r="15.5" />
-      <path d="M13.5 21L18.5 16L13.5 11" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>,
-  ].filter(Boolean)
+export const CircleArrow = (props: Props) => {
+  const {
+    className = 'flex gap-4 text-yellow-450 items-center',
+    svg,
+    text,
+    link,
+    svgClassName = "size-6",
+    textClassName = "uppercase text-white font-oswald w-max",
+  } = props
 
   return (
     <Link to={link} className={className}>
-      {elements}
+      <div className='flex gap-1 items-center'>
+        {svg && <img className={svgClassName} src={svg} alt="icon" />}
+        {text && <span className={textClassName}>{text}</span>}
+      </div>
+      <svg
+        className="size-8 stroke-current"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="16" cy="16" r="15.5" />
+        <path d="M13.5 21L18.5 16L13.5 11" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </Link>
   )
 }

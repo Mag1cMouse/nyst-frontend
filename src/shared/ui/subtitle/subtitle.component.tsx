@@ -5,7 +5,7 @@ type Props = SharedTypes.Ui.PropsWithClassName<{
 }>
 
 export const Subtitle = (props: Props) => {
-  const { className, text, ...restProps } = props
+  const { className = "flex gap-2 font-oswald", text, ...restProps } = props
 
   return (
     <div className={className} {...restProps}>

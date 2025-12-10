@@ -1,4 +1,5 @@
-import { Contacts } from '@shared/ui'
+import { Contacts, ShareButton } from '@shared/ui'
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router'
 import { RootLogin } from '../modal-window'
@@ -6,9 +7,9 @@ import { MobileMenu } from '../modal-window/root.mobile-menu'
 
 const headerNavLinks = [
   { label: 'experience', href: '/experience' },
-  { label: 'event registration', href: '#' },
-  { label: 'membership', href: '#' },
-  { label: 'rentals', href: '#' },
+  { label: 'event registration', href: '/eventregistration' },
+  { label: 'membership', href: '/membership' },
+  { label: 'rentals', href: '/rentals' },
 ]
 
 const footerNavLinks = [{ label: 'Local Experiences', href: '#' }]
@@ -20,8 +21,17 @@ export function RootLayout(props: React.PropsWithChildren) {
   const [isShowModalWindow, setIsShowModalWindow] = useState(false)
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false)
 
-  const location = useLocation().pathname.split('/').filter(Boolean)
-  const formatted = ['MAIN', ...location.map((s) => s.toUpperCase())]
+  const { pathname } = useLocation()
+
+  const segments = pathname.split('/').filter(Boolean)
+
+  const breadcrumbs = [
+    { label: 'MAIN', path: '/' },
+    ...segments.map((seg, i) => ({
+      label: seg.toUpperCase(),
+      path: '/' + segments.slice(0, i + 1).join('/'),
+    })),
+  ]
 
   useEffect(() => {
     if (isShowModalWindow || isShowMobileMenu) {
@@ -39,10 +49,19 @@ export function RootLayout(props: React.PropsWithChildren) {
         <Contacts className="hidden h-max justify-center gap-2 py-4.5 md:flex" />
         <div className="bg-white">
           <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-20">
-            <img className="flex w-22 items-center" src="/logo.png" alt="logo" />
+            <NavLink to="/">
+              <img className="flex w-22 items-center" src="/logo.png" alt="logo" />
+            </NavLink>
+
             <div className="font-oswald hidden w-max uppercase md:flex lg:gap-20">
               {headerNavLinks.map(({ label, href }) => (
-                <NavLink key={label} to={href} className="px-2.5 py-1">
+                <NavLink
+                  key={label}
+                  to={href}
+                  className={({ isActive }) =>
+                    clsx('px-2.5 py-1', isActive && 'rounded-full bg-black text-white')
+                  }
+                >
                   {label}
                 </NavLink>
               ))}
@@ -56,7 +75,7 @@ export function RootLayout(props: React.PropsWithChildren) {
                   setIsShowModalWindow(!isShowModalWindow)
                 }}
               />
-              <img src="/shared.svg" alt="shared" className="size-5" />
+              <ShareButton />
               <img
                 className="size-6.5 md:hidden"
                 src="/menu.svg"
@@ -68,17 +87,20 @@ export function RootLayout(props: React.PropsWithChildren) {
             </div>
           </div>
         </div>
-				</header>
-      {useLocation().pathname !== '/' && (
+      </header>
+      {pathname !== '/' && (
         <span className="font-oswald flex gap-1 px-20 pb-6 font-light">
-          {formatted.map((seg, index) => (
+          {breadcrumbs.map((crumb, index) => (
             <span key={index}>
-              <span className={index === formatted.length - 1 ? 'font-normal' : ''}>{seg}</span>
-              {index < formatted.length - 1 && ' > '}
+              <NavLink to={crumb.path} className={index === breadcrumbs.length - 1 ? 'font-normal' : ''}>
+                {crumb.label}
+              </NavLink>
+              {index < breadcrumbs.length - 1 && ' > '}
             </span>
           ))}
         </span>
       )}
+
       <main>{children}</main>
       <footer className="bg-white">
         <section className="flex flex-col items-center gap-6 py-6">

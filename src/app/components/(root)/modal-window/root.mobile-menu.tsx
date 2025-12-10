@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router'
-
 import { Contacts } from '@shared/ui'
-import {} from './'
+
 
 const navLinks = [
-  { label: 'experience', href: '' },
-  { label: 'event registration', href: '' },
-  { label: 'membership', href: '' },
-  { label: 'rentals', href: '' },
+  { label: 'experience', href: '/experience' },
+  { label: 'event registration', href: '#' },
+  { label: 'membership', href: '#' },
+  { label: 'rentals', href: '#' },
 ]
 
 type TProps = {

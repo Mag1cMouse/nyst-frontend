@@ -1,5 +1,5 @@
 import type { SharedTypes } from '@shared'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type TVideoItem = {
   srcVideo: string
@@ -18,8 +18,12 @@ export const Video = (props: Props) => {
   const { className, item, h2ClassName, divFullClassName, ...restProps } = props
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
-
+  const [windowSize, setWindowSize] = useState<number | null>(null)
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
+
+  useEffect(() => {
+    setWindowSize(window.innerWidth)
+  }, [])
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -30,24 +34,19 @@ export const Video = (props: Props) => {
 
   return (
     <div className={className} {...restProps}>
-      {/* Видео */}
       <video
         ref={videoRef}
         className="absolute top-0 left-0 z-0 size-full object-cover"
         src={item.srcVideo}
         loop
         muted
-        // autoPlay
+        autoPlay={windowSize !== null && windowSize > 1024}
       />
 
       <div className={divFullClassName}>
         <div className="flex flex-col">
           {item.subTitle && <div className="font-oswald text-4.5xl font-semibold">{item.subTitle}</div>}
-          <h2
-            className={h2ClassName}
-          >
-            {item.title}
-          </h2>
+          <h2 className={h2ClassName}>{item.title}</h2>
           {item.text && <div className="font-cormorant text-3.5xl font-bold">{item.text}</div>}
         </div>
 

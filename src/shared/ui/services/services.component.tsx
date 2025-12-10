@@ -15,6 +15,7 @@ type TServicesArray = {
   backgroundImg: string
   calendarSvg?: string
   link?: string
+  linkText?: string
   arrowCircle?: boolean
 }
 
@@ -55,7 +56,7 @@ export const Services = (props: Props) => {
                 textClassName="text-white uppercase"
                 svg={item.calendarSvg}
                 link={item.link || '#'}
-                text={item.link}
+                text={item.linkText}
                 className="text-yellow-450 z-10 flex items-center gap-4"
               />
             )}

@@ -2,19 +2,20 @@ import type { SharedTypes } from '@shared'
 
 type Props = SharedTypes.Ui.PropsWithClassName<{
   answer: string
-  descriptions: string[] | string
+  descriptions?: string[] | string
+  answerClassName?: string
 }>
 
 export const MiniTextBlock = (props: Props) => {
-  const { className, answer, descriptions, ...restProps } = props
+  const { className, answer, descriptions, answerClassName = 'text-2xl/7', ...restProps } = props
 
   const isArray = Array.isArray(descriptions)
 
   return (
     <div className={className} {...restProps}>
-      <div className="font-oswald flex items-center gap-2">
-        <div className="bg-yellow-450 h-5 w-2 rounded-full"></div>
-        <h3 className="text-2xl/7">{answer}</h3>
+      <div className="font-oswald flex gap-2">
+        <div className="bg-yellow-450 h-5 w-2 flex-none rounded-full relative top-1.5" />
+        <h3 className={answerClassName}>{answer}</h3>
       </div>
 
       {isArray ? (
@@ -22,14 +23,14 @@ export const MiniTextBlock = (props: Props) => {
           {descriptions.map((desc, index) => (
             <li
               key={index}
-              className="font-oswald before:text-soft-gray relative pl-4 text-base/4 font-light before:absolute before:top-0 before:left-0 before:text-xs before:content-['•'] lg:left-3"
+              className="font-oswald before:text-soft-gray relative pl-4 font-light before:absolute before:top-0 before:left-0 before:text-xs before:content-['•'] lg:left-3"
             >
               {desc}
             </li>
           ))}
         </ul>
       ) : (
-        <span className="font-oswald w-full text-base/4 font-light">{descriptions}</span>
+        <span className="font-oswald w-full font-light">{descriptions}</span>
       )}
     </div>
   )

@@ -6,62 +6,61 @@ import { RootLayout } from '~/components'
 
 const descriptionCardsArray = [
   {
-    text: 'about',
+    subTitleText: 'about',
     title: 'NEW YORK SAFETY TRACK: THE ULTIMATE RACETRACK IN UPSTATE NEW YORK',
-    description:
-      'Looking for the perfect motorcycle racetrack in New York? New York Safety Track is your go-to destination, just 2.5 hours from Manhattan in the breathtaking Catskill Mountains. Designed for motorsport enthusiasts, professional riders, and beginners alike, we offer a premier facility to hone your skills or enjoy a thrilling day on the track.',
+    description: (
+      <p className="font-oswald text-gray-850 font-light">
+        Looking for the perfect motorcycle racetrack in New York?{' '}
+        <span className="font-bold">NEW YORK SAFETY TRACK</span>is your go-to destination, just 2.5 hours from
+        Manhattan in the breathtaking Catskill Mountains. Designed for motorsport enthusiasts, professional
+        riders, and beginners alike, we offer a premier facility to hone your skills or enjoy a thrilling day
+        on the track.
+      </p>
+    ),
     img: '/summerTrack.png',
-    finishSvg: '/finishBlack.svg',
-    lineSvg: '/lineDot.svg',
+    circleArrow: true,
     button: {
       svg: '/calendar.svg',
       text: 'discover more',
-      next: '/arrowCircle.svg',
       link: '#',
     },
   },
   {
-    text: 'main track',
+    subTitleText: 'main track',
     title: 'Experience the Supreme Challenge',
     description:
       'Our main track is a 2.2-mile-long technical masterpiece with 18 challenging turns and 450 feet of elevation changes. Widely regarded as one of the most demanding and exciting racetracks in the Northeast, its perfect for riders and drivers seeking a high-adrenaline experience.',
     img: '/schematicTrack.png',
-    finishSvg: '/finishBlack.svg',
-    lineSvg: '/lineDot.svg',
+    circleArrow: true,
     button: {
       svg: '/calendar.svg',
       text: 'discover more',
-      next: '/arrowCircle.svg',
       link: '#',
     },
   },
   {
-    text: 'mini track',
+    subTitleText: 'mini track',
     title: 'Unleash Your Skills on Our Dynamic 0.8-Mile Mini Track!',
     description:
       'For those looking for versatility, our mini track spans 0.8 miles with over 25 turns and 85 feet of elevation changes, offering multiple configurations for training, practice, and fun',
     img: '/miniTrack.png',
-    finishSvg: '/finishBlack.svg',
-    lineSvg: '/lineDot.svg',
+    circleArrow: true,
     button: {
       svg: '/calendar.svg',
       text: 'discover more',
-      next: '/arrowCircle.svg',
       link: '#',
     },
   },
   {
-    text: 'airport',
+    subTitleText: 'airport',
     title: 'NYST is NY02. FLY-IN AND ENJOY YOUR DAY WITH US.',
     description:
       "New York Safety Track is more than just a racetrack—it's also an FAA-registered airport (identifier: NY02). The 2,400-foot-long, 40-foot-wide runway features a top-notch surface and can accommodate most light piston and turbine aircraft with prior reservation.",
     img: '/trackWithJat.jpg',
-    finishSvg: '/finishBlack.svg',
-    lineSvg: '/lineDot.svg',
+    circleArrow: true,
     button: {
       svg: '/calendar.svg',
       text: 'discover more',
-      next: '/arrowCircle.svg',
       link: '#',
     },
   },
@@ -71,12 +70,10 @@ const descriptionCardsArray = [
     description:
       'We proudly offer a state-of-the-art tactical shooting range designed to deliver the ultimate training experience. For New York State CCW license holders, we provide specialized safety courses conducted by NRA-certified instructors, ensuring unmatched standards of safety and professionalism.',
     img: '/peopleWithGan.png',
-    finishSvg: '/finishBlack.svg',
-    lineSvg: '/lineDot.svg',
+    circleArrow: true,
     button: {
       svg: '/calendar.svg',
       text: 'discover more',
-      next: '/arrowCircle.svg',
       link: '#',
     },
   },
@@ -105,7 +102,8 @@ const servicesArray = [
     description:
       'Learn to brake later, corner faster, and ride with total control. After a track day, you’ll feel like a whole new rider or driver.',
     calendarSvg: 'calendarWhite.svg',
-    link: 'Sign Up',
+    link: 'signup',
+    linkText: 'Sign Up',
     backgroundImg: '/cars.jpg',
     arrowCircle: true,
   },
@@ -113,7 +111,8 @@ const servicesArray = [
     title: 'School',
     description: 'Take Your Riding to the Next Level',
     calendarSvg: 'calendarWhite.svg',
-    link: 'Sign Up',
+    link: 'signup',
+    linkText: 'Sign Up',
     backgroundImg: '/peoples.jpg',
     arrowCircle: true,
   },
@@ -121,7 +120,8 @@ const servicesArray = [
     title: 'Racing',
     description: 'Motocycle club Racing at NYST',
     calendarSvg: 'calendarWhite.svg',
-    link: 'discover more',
+    link: 'discovermore',
+    linkText: 'discover more',
     backgroundImg: '/bike.jpg',
     arrowCircle: true,
   },
@@ -129,7 +129,8 @@ const servicesArray = [
     title: 'Corporate event',
     description: 'Excitement Meets Relaxation',
     calendarSvg: 'calendarWhite.svg',
-    link: 'discover more',
+    link: 'discovermore',
+    linkText: 'discover more',
     backgroundImg: '/bike.jpg',
     arrowCircle: true,
   },

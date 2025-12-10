@@ -50,5 +50,6 @@
     ".*ClassNames"
   ],
   "tailwindCSS.classFunctions": ["clsx"],
-  "cSpell.words": ["NYST"]
+  "cSpell.words": ["NYST"],
+  "liveServer.settings.multiRootWorkspaceName": "nyst-frontend"
 }

@@ -45,9 +45,9 @@ export const Video = (props: Props) => {
 
       <div className={divFullClassName}>
         <div className="flex flex-col">
-          {item.subTitle && <div className="font-oswald text-4.5xl font-semibold">{item.subTitle}</div>}
+          {item.subTitle && <div className="font-oswald lg:text-4.5xl md:text-3xl text-xl font-semibold">{item.subTitle}</div>}
           <h2 className={h2ClassName}>{item.title}</h2>
-          {item.text && <div className="font-cormorant text-3.5xl font-bold">{item.text}</div>}
+          {item.text && <div className="font-cormorant ld:text-3.5xl md:text-2xl text-base  font-bold">{item.text}</div>}
         </div>
 
         {!isPlayingVideo && (

@@ -16,13 +16,13 @@ export const CircleArrow = (props: Props) => {
     svg,
     text,
     link,
-    svgClassName = "size-6",
-    textClassName = "uppercase text-white font-oswald w-max font-medium",
+    svgClassName = 'size-6',
+    textClassName = 'uppercase text-white font-oswald w-max font-medium',
   } = props
 
   return (
     <Link to={link} className={className}>
-      <div className='flex gap-1 items-center'>
+      <div className="flex items-center gap-1">
         {svg && <img className={svgClassName} src={svg} alt="icon" />}
         {text && <span className={textClassName}>{text}</span>}
       </div>

@@ -1,1 +1,1 @@
-export { Contacts } from './contacts.component.tsx';
+export { Contacts } from './contacts.component.tsx'

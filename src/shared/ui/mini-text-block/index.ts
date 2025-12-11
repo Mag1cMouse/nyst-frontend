@@ -1,1 +1,1 @@
-export { MiniTextBlock } from './mini-text-block.component.tsx';
+export { MiniTextBlock } from './mini-text-block.component.tsx'

@@ -1,1 +1,1 @@
-export { Questions } from './questions.component.tsx';
+export { Questions } from './questions.component.tsx'

@@ -1,1 +1,1 @@
-export { Video } from './video.component.tsx';
+export { Video } from './video.component.tsx'

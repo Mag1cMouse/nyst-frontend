@@ -10,11 +10,11 @@ type Props = SharedTypes.Ui.PropsWithClassName<{
 }>
 
 export const ImgBlock = (props: Props) => {
-  const { className, item,...restProps } = props
+  const { className, item, ...restProps } = props
   return (
     <div className={className} {...restProps}>
       {item.map(({ src, alt }, index) => (
-        <img key={index} src={src} alt={alt} className="size-full"/>
+        <img key={index} src={src} alt={alt} className="size-full" />
       ))}
     </div>
   )

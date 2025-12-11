@@ -1,12 +1,5 @@
-import {
-  CircleArrow,
-  DescriptionCard,
-  ImgBlock,
-  MiniTextBlock,
-  ServiceCard,
-  Services,
-  Video,
-} from '@shared/ui'
+import { CircleArrow, DescriptionCard, MiniTextBlock, ServiceCard, Services, Video } from '@shared/ui'
+import { MiniSlider } from '@widgets/mini-slider/mini-slider'
 import { RootLayout } from '~/components'
 
 const videoArr = {
@@ -500,39 +493,45 @@ export default function Experience() {
       </div>
 
       {/* What to Expect on a Track Day? */}
-      <div className="md:px-7.5 md:py-15 lg:p-20">
+      <div className="px-4 py-10 md:px-7.5 md:py-15 lg:p-20">
         <div className="flex w-full flex-col gap-6">
           <Services
-            imgClassName="font-oswald relative flex h-74.5 flex-col justify-end rounded-xl bg-cover bg-no-repeat px-4 py-6 md:gap-4.5 lg:h-120 lg:gap-6"
+            imgClassName="font-oswald relative flex h-110 md:h-80 flex-col justify-end rounded-xl bg-cover bg-no-repeat px-4 py-6 md:gap-4.5 lg:h-120 lg:gap-6"
             servicesArray={cardArr}
-            className="flex lg:flex-row flex-col gap-4 text-white"
+            className="flex flex-col gap-4 text-white lg:flex-row"
           />
           <div className="flex h-full flex-col gap-3">
             <div className="flex justify-between">
               <h3 className="font-oswald text-2xl/6">What to Expect on a Track Day?</h3>
               <CircleArrow
                 text="sign up"
-                className="text-blue-850 flex items-center gap-2 uppercase"
+                className="text-blue-850 hidden items-center gap-2 uppercase md:flex"
                 textClassName="text-black font-medium font-oswald"
                 link="/eventreg"
               />
             </div>
-            <div className="flex flex-wrap gap-5 gap-y-10">
+            <div className="flex flex-col flex-wrap gap-5 gap-y-3 md:flex-row md:gap-y-10">
               {firstTextBlockArr.map(({ answer, descriptions }, index) => (
                 <MiniTextBlock
                   key={index}
                   answer={answer}
                   descriptions={descriptions}
-                  className="flex w-4/10 grow flex-col gap-2"
+                  className="flex grow flex-col gap-2 md:w-4/10"
                 />
               ))}
             </div>
           </div>
+          <CircleArrow
+            text="sign up"
+            className="text-blue-850 flex items-center gap-2 uppercase md:hidden"
+            textClassName="text-black font-medium font-oswald"
+            link="/eventreg"
+          />
         </div>
       </div>
 
       {/* Why You Should Attend a Track Day */}
-      <div className=" flex lg:flex-row flex-col gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10">
+      <div className="flex flex-col gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10">
         <div className="flex flex-col justify-between gap-6 py-4">
           <h3 className="font-oswald text-2xl/6">Why You Should Attend a Track Day</h3>
           {secondTextBlockArr.map(({ answer, descriptions }, index) => (
@@ -544,18 +543,22 @@ export default function Experience() {
             />
           ))}
         </div>
-        <ImgBlock item={twoImgArr} className="flex h-84 shrink-0 gap-5" />
+        <div className="flex flex-col gap-5 md:flex-row">
+          {twoImgArr.map(({ src, alt }, index) => (
+            <img key={index} src={src} alt={alt} className="h-50 w-full lg:h-84" />
+          ))}
+        </div>
       </div>
 
       {/* What to bring*/}
-      <div className="flex flex-col gap-3 md:px-7.5 md:py-15 lg:px-20 lg:py-10">
+      <div className="flex flex-col gap-3 px-4 py-10 md:px-7.5 md:py-15 lg:px-20 lg:py-10">
         <h3 className="font-oswald text-2xl/6">What to Bring?</h3>
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 md:flex-row">
           {whatBringArr.map(({ answer, descriptions, img }, index) => (
             <div key={index} className="h-65.5 flex-1">
               <Services
                 servicesArray={img}
-                imgClassName="font-oswald relative flex h-74.5 flex-col justify-end rounded-xl bg-cover bg-center bg-no-repeat px-4 py-6 md:basis-[calc(50%-0.625rem)] md:gap-4.5 lg:h-65.5 lg:gap-6"
+                imgClassName="font-oswald relative flex h-74.5 flex-col justify-end rounded-xl bg-cover bg-center bg-no-repeat px-4 py-6 md:gap-4.5 lg:h-65.5 lg:gap-6"
               >
                 <MiniTextBlock answer={answer} descriptions={descriptions} className="z-30 text-white" />
               </Services>
@@ -567,7 +570,7 @@ export default function Experience() {
       {/* Why Wait? Join the Action! */}
       <DescriptionCard
         item={descriptionCardArr[0]}
-        className="flex lg:flex-row-reverse flex-col-reverse items-center gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
       />
 
       {/* Feel the thrill. Find your limits. See you on the track! */}
@@ -582,9 +585,9 @@ export default function Experience() {
       {/* Take Your Riding to the Next Level */}
       <DescriptionCard
         item={descriptionCardArr[1]}
-        imgWrapperClassName="grid grid-cols-2 gap-5"
+        imgWrapperClassName="md:grid grid-cols-2 gap-5 hidden"
         imgItemClassName="h-84 w-full rounded-lg object-cover"
-        className="flex lg:flex-row-reverse flex-col-reverse items-center justify-center gap-5 md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">Why Choose NYST Advanced Riding School?</h3>
@@ -597,12 +600,16 @@ export default function Experience() {
             />
           ))}
         </div>
+        <MiniSlider
+          slides={descriptionCardArr[1].img}
+          className="relative w-full overflow-hidden md:hidden"
+        />
       </DescriptionCard>
 
       {/* What to Expect */}
-      <div className="flex flex-col gap-3 bg-white px-20 py-10">
+      <div className="flex flex-col gap-3 bg-white px-4 py-10 md:py-15 lg:px-20 lg:py-10">
         <h3 className="font-oswald text-2xl/6">What to Expect</h3>
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 md:flex-row">
           {whatExpectArr.map(({ answer, descriptions, img }, index) => (
             <div key={index} className="h-65.5 flex-1">
               <Services
@@ -619,7 +626,7 @@ export default function Experience() {
       {/* What Makes Us Different? */}
       <DescriptionCard
         item={descriptionCardArr[2]}
-        className="flex lg:flex-row flex-col-reverse items-center justify-center gap-5 md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10"
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">What Makes Us Different?</h3>
@@ -648,8 +655,8 @@ export default function Experience() {
       {/* MOTORCYCLE CLUB RACING AT NYST */}
       <DescriptionCard
         item={descriptionCardArr[3]}
-        className="flex lg:flex-row flex-col-reverse items-center justify-center gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10"
-        imgWrapperClassName="grid w-1/2 grid-cols-[repeat(3,minmax(0,1fr))] gap-3 lg:gap-6"
+        className="flex flex-col-reverse items-center justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10"
+        imgWrapperClassName="w-1/2 grid-cols-3 gap-3 lg:gap-6 md:grid hidden"
         imgItemClassName={(i) =>
           i === 0 ? 'col-span-3 h-84 w-full rounded-lg object-cover' : 'h-54 w-full rounded-lg object-cover'
         }
@@ -665,12 +672,16 @@ export default function Experience() {
             />
           ))}
         </div>
+        <MiniSlider
+          slides={descriptionCardArr[3].img}
+          className="relative w-full overflow-hidden md:hidden rounded-2lg"
+        />
       </DescriptionCard>
 
       {/* How It Works */}
-      <div className="flex flex-col gap-3 md:px-7.5 md:py-15 lg:px-20 lg:py-10">
+      <div className="flex flex-col gap-3 px-4 py-10 md:px-7.5 md:py-15 lg:px-20 lg:py-10">
         <h3 className="font-oswald text-2xl/6">How It Works</h3>
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 lg:flex-row">
           {HowItWorksArr.map(({ answer, img }, index) => (
             <div key={index} className="h-65.5 flex-1">
               <Services
@@ -700,7 +711,7 @@ export default function Experience() {
       {/* Rejuvenate Your Team with Corporate Events at NYST */}
       <DescriptionCard
         item={descriptionCardArr[5]}
-        className="flex lg:flex-row-reverse flex-col-reverse items-center justify-center gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
         imgWrapperClassName="grid w-1/2 grid-cols-1 gap-6"
         imgItemClassName="w-157.5 shrink-0 h-auto rounded-lg"
       >
@@ -720,7 +731,7 @@ export default function Experience() {
       {/* What to Expect */}
       <DescriptionCard
         item={descriptionCardArr[6]}
-        className="flex lg:flex-row flex-col-reverse items-center justify-center gap-5 md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10"
         imgWrapperClassName="grid grid-cols-2 gap-6"
         imgItemClassName="w-full rounded-lg object-cover"
       >
@@ -740,7 +751,7 @@ export default function Experience() {
       {/* Why Your Team Will Love It */}
       <DescriptionCard
         item={descriptionCardArr[7]}
-        className="flex lg:flex-row-reverse flex-col-reverse lg:items-center justify-center gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:items-center lg:px-20 lg:py-10"
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">What Makes Us Different?</h3>
@@ -764,7 +775,7 @@ export default function Experience() {
       {/* Host Your Special Event at New York Safety Track */}
       <DescriptionCard
         item={descriptionCardArr[8]}
-        className="flex lg:flex-row-reverse flex-col-reverse items-center justify-center gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
         imgWrapperClassName="grid w-1/2 grid-cols-1 gap-6"
         imgItemClassName="w-157.5 shrink-0 h-auto rounded-lg"
       >
@@ -784,7 +795,7 @@ export default function Experience() {
       {/* Event Highlights */}
       <DescriptionCard
         item={descriptionCardArr[9]}
-        className="flex lg:flex-row flex-col-reverse items-center justify-center gap-5 md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10"
         imgItemClassName="w-1/2"
       >
         <div className="flex flex-col gap-4">
@@ -814,7 +825,7 @@ export default function Experience() {
       {/* Why Choose NYST for Your Special Project? */}
       <DescriptionCard
         item={descriptionCardArr[10]}
-        className="flex lg:flex-row-reverse flex-col-reverse items-center justify-center gap-5 bg-white md:px-7.5 md:py-15 lg:px-20 lg:py-10"
+        className="flex flex-col-reverse items-center justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
         imgItemClassName="w-1/2"
       >
         <h3 className="font-oswald text-2xl">Why Choose NYST for Your Special Project?</h3>
@@ -831,15 +842,15 @@ export default function Experience() {
       </DescriptionCard>
 
       {/* Perfect for: */}
-      <div className="flex flex-col gap-3 md:py-15 md:p-7.5 lg:p-20">
+      <div className="flex flex-col gap-3 px-4 py-10 md:p-7.5 md:py-15 lg:p-20">
         <h3 className="font-oswald text-2xl">Perfect for:</h3>
-        <div className="flex flex-col lg:flex flex-wrap gap-5 gap-y-10">
+        <div className="flex flex-col flex-wrap gap-5 gap-y-10 lg:flex">
           {thirteenthTextBlockArr.map(({ answer, descriptions }, index) => (
             <MiniTextBlock
               key={index}
               answer={answer}
               descriptions={descriptions}
-              className="flex w-full lg:w-4/10 grow flex-col gap-2"
+              className="flex w-full grow flex-col gap-2 lg:w-4/10"
             />
           ))}
         </div>

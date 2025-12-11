@@ -3,7 +3,8 @@ import { CircleArrow } from '../circle-arrow'
 
 type Props = SharedTypes.Ui.PropsWithClassName<{
   item: TServiceCard
-}> & React.PropsWithChildren
+}> &
+  React.PropsWithChildren
 
 type TServiceCard = {
   header: string
@@ -20,16 +21,16 @@ export const ServiceCard = (props: Props) => {
   return (
     <div>
       <section className={className} {...restProps} style={{ backgroundImage: `url(${item.urlOfBgImage})` }}>
-        <div className="gap-2 flex flex-col items-center text-center z-30 md:px-5 lg:px-20">
+        <div className="z-30 flex flex-col items-center gap-2 text-center md:px-5 lg:px-20">
           <h2 className="text-4.5xl/15 max-w-7xl text-center font-semibold uppercase">{item.header}</h2>
-          <div className='flex flex-col gap-5 items-center'>
+          <div className="flex flex-col items-center gap-5">
             {item.text && <p className="text-center text-2xl/8">{item.text}</p>}
             {children && children}
           </div>
         </div>
-        
-        <button className="text-yellow-450 flex items-center gap-4 leading-4.5 z-30">
-          <CircleArrow svg={item.additionalImage} text={item.label} link={item.link || "#"} />
+
+        <button className="text-yellow-450 z-30 flex items-center gap-4 leading-4.5">
+          <CircleArrow svg={item.additionalImage} text={item.label} link={item.link || '#'} />
         </button>
       </section>
     </div>

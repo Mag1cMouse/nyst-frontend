@@ -493,7 +493,7 @@ export default function Experience() {
       <div className="relative h-41.5 md:h-79 lg:h-120">
         <Video
           item={videoArr}
-          h2ClassName="md:text-12xl/30 text- font-cormorant text-2xl font-bold uppercase"
+          h2ClassName="lg:text-12xl/30 md:text-9xl text-5xl font-cormorant font-bold uppercase"
           divFullClassName="relative z-10 flex size-full flex-col items-center justify-center gap-4 p-6 text-center text-white bg-black/40"
           className="flex h-full items-center bg-black/40"
         />

@@ -52,7 +52,6 @@ const slides: TSlide[] = [
     button: {
       label: 'view shedule',
       link: '/start',
-
     },
   },
   {
@@ -137,7 +136,7 @@ export function Slider() {
                       {slide.title}
                     </span>
                     {(index === 1 || index === 4) && (
-                      <CircleArrow svgClassName='size-4' link={slide.button.link} text={slide.button.label}/>
+                      <CircleArrow svgClassName="size-4" link={slide.button.link} text={slide.button.label} />
                     )}
                   </div>
                   {slide.description && (
@@ -152,14 +151,18 @@ export function Slider() {
                         {slide.description}
                       </span>
                       {(index === 2 || index === 3) && (
-                       <CircleArrow svgClassName='size-4' link={slide.button.link} text={slide.button.label}/>
+                        <CircleArrow
+                          svgClassName="size-4"
+                          link={slide.button.link}
+                          text={slide.button.label}
+                        />
                       )}
                     </div>
                   )}
                 </div>
 
                 {index === 0 && (
-                 <CircleArrow svgClassName='size-4' link={slide.button.link} text={slide.button.label}/>
+                  <CircleArrow svgClassName="size-4" link={slide.button.link} text={slide.button.label} />
                 )}
               </div>
             </div>

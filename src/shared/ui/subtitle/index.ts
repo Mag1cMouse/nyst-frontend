@@ -1,1 +1,1 @@
-export { Subtitle } from './subtitle.component';
+export { Subtitle } from './subtitle.component'

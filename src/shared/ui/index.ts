@@ -12,5 +12,5 @@ export { ServiceCard } from './service-card'
 export { Services } from './services'
 export { Subtitle } from './subtitle'
 export { Video } from './video'
-export { ImgBlock } from './img-block';
-export { ShareButton } from './sharebutton';
+export { ImgBlock } from './img-block'
+export { ShareButton } from './sharebutton'

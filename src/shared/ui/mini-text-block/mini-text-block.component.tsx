@@ -14,7 +14,7 @@ export const MiniTextBlock = (props: Props) => {
   return (
     <div className={className} {...restProps}>
       <div className="font-oswald flex gap-2">
-        <div className="bg-yellow-450 h-5 w-2 flex-none rounded-full relative top-1.5" />
+        <div className="bg-yellow-450 relative top-1.5 h-5 w-2 flex-none rounded-full" />
         <h3 className={answerClassName}>{answer}</h3>
       </div>
 

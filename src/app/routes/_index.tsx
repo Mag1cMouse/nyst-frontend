@@ -11,10 +11,10 @@ const descriptionCardsArray = [
     description: (
       <p className="font-oswald text-gray-850 font-light">
         Looking for the perfect motorcycle racetrack in New York?{' '}
-        <span className="font-bold">New York Safety Track</span>{' '}is your go-to destination, just 2.5 hours from
-        Manhattan in the breathtaking Catskill Mountains. Designed for motorsport enthusiasts, professional
-        riders, and beginners alike, we offer a premier facility to hone your skills or enjoy a thrilling day
-        on the track.
+        <span className="font-bold">New York Safety Track</span> is your go-to destination, just 2.5 hours
+        from Manhattan in the breathtaking Catskill Mountains. Designed for motorsport enthusiasts,
+        professional riders, and beginners alike, we offer a premier facility to hone your skills or enjoy a
+        thrilling day on the track.
       </p>
     ),
     img: '/summerTrack.png',

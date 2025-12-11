@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router'
 import { Contacts } from '@shared/ui'
 
-
 const navLinks = [
   { label: 'experience', href: '/experience' },
   { label: 'event registration', href: '#' },

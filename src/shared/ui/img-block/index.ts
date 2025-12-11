@@ -1,1 +1,1 @@
-export { ImgBlock } from './img-block.component.tsx';
+export { ImgBlock } from './img-block.component.tsx'

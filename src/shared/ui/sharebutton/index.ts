@@ -1,1 +1,1 @@
-export { ShareButton } from './sharebutton.component';
+export { ShareButton } from './sharebutton.component'

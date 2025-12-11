@@ -68,8 +68,12 @@ export function RootLayout(props: React.PropsWithChildren) {
               ))}
             </div>
 
-            <div className="relative flex gap-4.5 items-center">
-              <ShareButton isShowShareButton={isShowShareButton} setIsShowShareButton={setIsShowShareButton} className={clsx('p-0.5', isShowShareButton ? "bg-gray-150/40 rounded-t-md " : "")} />
+            <div className="relative flex items-center gap-4.5">
+              <ShareButton
+                isShowShareButton={isShowShareButton}
+                setIsShowShareButton={setIsShowShareButton}
+                className={clsx('p-0.5', isShowShareButton ? 'bg-gray-150/40 rounded-t-md' : '')}
+              />
               <img
                 src={!isShowModalWindow ? '/profile.svg' : 'yellowProfile.svg'}
                 alt="profile"

@@ -490,10 +490,10 @@ const twoImgArr = [
 export default function Experience() {
   return (
     <RootLayout>
-      <div className="relative md:h-84 lg:h-120">
+      <div className="relative h-41.5 md:h-79 lg:h-120">
         <Video
           item={videoArr}
-          h2ClassName="md:text-12xl/30 font-cormorant text-2xl font-bold uppercase"
+          h2ClassName="md:text-12xl/30 text- font-cormorant text-2xl font-bold uppercase"
           divFullClassName="relative z-10 flex size-full flex-col items-center justify-center gap-4 p-6 text-center text-white bg-black/40"
           className="flex h-full items-center bg-black/40"
         />

@@ -25,27 +25,22 @@ export const Services = (props: Props) => {
   return (
     <div className={className} {...restProps}>
       {!Array.isArray(servicesArray) ? (
-        <div
-          className={imgClassName}
-          style={{ backgroundImage: `url(${servicesArray.backgroundImg})` }}
-        >
+        <div className={imgClassName} style={{ backgroundImage: `url(${servicesArray.backgroundImg})` }}>
           {children && children}
           <div className="pointer-events-none absolute bottom-0 left-0 h-2/3 w-full rounded-xl bg-gradient-to-t from-black to-transparent"></div>
         </div>
       ) : (
         servicesArray.map((item, index) => (
-          <div
-            key={index}
-            className={imgClassName}
-            style={{ backgroundImage: `url(${item.backgroundImg})` }}
-          >
+          <div key={index} className={imgClassName} style={{ backgroundImage: `url(${item.backgroundImg})` }}>
             <div className="pointer-events-none absolute bottom-0 left-0 h-2/3 w-full rounded-xl bg-gradient-to-t from-black to-transparent" />
 
             {children && children}
 
             {item.title && (
               <div className="z-10 flex flex-col gap-2">
-                <h2 className="text-3.5xl lg:text-4.5xl font-semibold uppercase">{item.title}</h2>
+                <h2 className="text-3.5xl lg:text-4.5xl font-semibold uppercase md:w-60 lg:w-full">
+                  {item.title}
+                </h2>
                 <p className="font-light md:text-base">{item.description}</p>
               </div>
             )}

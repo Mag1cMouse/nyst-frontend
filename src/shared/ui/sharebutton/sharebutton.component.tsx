@@ -1,6 +1,6 @@
 import type { SharedTypes } from '@shared'
 import clsx from 'clsx'
-import { Link, useLocation } from 'react-router'
+import { Link } from 'react-router'
 
 type Props = SharedTypes.Ui.PropsWithClassName<{
   isShowShareButton: boolean
@@ -19,21 +19,8 @@ const footerImageUrls = [
 export const ShareButton = (props: Props) => {
   const { className, isShowShareButton, setIsShowShareButton, ...restProps } = props
 
-  const url = useLocation().pathname
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: document.title,
-        url,
-      })
-    } else {
-      navigator.clipboard.writeText(url)
-    }
-  }
-
   return (
-    <div className={clsx(className)} {...restProps} onClick={handleShare}>
+    <div className={clsx(className)} {...restProps}>
       <img
         src="/shared.svg"
         alt="shared"

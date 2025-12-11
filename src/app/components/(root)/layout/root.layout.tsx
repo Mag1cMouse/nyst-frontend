@@ -47,7 +47,7 @@ export function RootLayout(props: React.PropsWithChildren) {
       {isShowModalWindow && <RootLogin setIsShowModalWindow={setIsShowModalWindow} />}
       {isShowMobileMenu && <MobileMenu setIsShowMobileMenu={setIsShowMobileMenu} />}
       <header className="sticky top-0 z-150 flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-rem]">
-        <Contacts className="hidden h-max justify-center gap-2 py-4.5 md:flex" />
+        <Contacts className="hidden h-max justify-center gap-4.5 py-4.5 md:flex" />
         <div className="bg-white">
           <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-20">
             <NavLink to="/">
@@ -68,7 +68,7 @@ export function RootLayout(props: React.PropsWithChildren) {
               ))}
             </div>
 
-            <div className="relative flex gap-4.5">
+            <div className="relative flex gap-4.5 items-center">
               <ShareButton isShowShareButton={isShowShareButton} setIsShowShareButton={setIsShowShareButton} className={clsx('p-0.5', isShowShareButton ? "bg-gray-150/40 rounded-t-md " : "")} />
               <img
                 src={!isShowModalWindow ? '/profile.svg' : 'yellowProfile.svg'}

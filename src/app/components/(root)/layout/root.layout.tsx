@@ -46,10 +46,10 @@ export function RootLayout(props: React.PropsWithChildren) {
     <div className="bg-gray-150">
       {isShowModalWindow && <RootLogin setIsShowModalWindow={setIsShowModalWindow} />}
       {isShowMobileMenu && <MobileMenu setIsShowMobileMenu={setIsShowMobileMenu} />}
-      <header className="sticky top-0 z-150 flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-rem]">
+      <header className="sticky top-0 z-150  flex flex-col pb-6 md:top-[-3.5rem] lg:top-[-rem]">
         <Contacts className="hidden h-max justify-center gap-4.5 py-4.5 md:flex" />
         <div className="bg-white">
-          <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-20">
+          <div className="shadow-layout flex w-full items-center justify-between bg-white px-4 py-2.5 md:px-7.5 lg:px-20">
             <NavLink to="/">
               <img className="flex w-22 items-center" src="/logo.png" alt="logo" />
             </NavLink>
@@ -96,7 +96,7 @@ export function RootLayout(props: React.PropsWithChildren) {
         </div>
       </header>
       {pathname !== '/' && (
-        <span className="font-oswald flex gap-1 px-20 pb-6 font-light">
+        <span className="font-oswald flex gap-1 px-4 md:7.5 lg:px-20 pb-6 font-light">
           {breadcrumbs.map((crumb, index) => (
             <span key={index}>
               <NavLink to={crumb.path} className={index === breadcrumbs.length - 1 ? 'font-normal' : ''}>

@@ -115,7 +115,7 @@ const sixthTextBlockArr = [
   {
     answer: 'Excitement Meets Relaxation',
     descriptions:
-      'Whether it’s the thrill of driving on our 2.2-mile road racing circuit or enjoying downtime with colleagues, our events strike the perfect balance between high-energy activities and peaceful <moments className=""></moments>',
+      'Whether it’s the thrill of driving on our 2.2-mile road racing circuit or enjoying downtime with colleagues, our events strike the perfect balance between high-energy activities and peaceful moments.',
   },
   {
     answer: 'Tailored Experiences',
@@ -475,7 +475,7 @@ const twoImgArr = [
     alt: 'blue bike',
   },
   {
-    src: '/summerRoad.png',
+    src: '/summerRoad.jpg',
     alt: 'summer road',
   },
 ]
@@ -532,7 +532,7 @@ export default function Experience() {
 
       {/* Why You Should Attend a Track Day */}
       <div className="flex flex-col gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10">
-        <div className="flex flex-col justify-between gap-6 py-4">
+        <div className="flex flex-col justify-between gap-6 py-4 lg:w-1/2">
           <h3 className="font-oswald text-2xl/6">Why You Should Attend a Track Day</h3>
           {secondTextBlockArr.map(({ answer, descriptions }, index) => (
             <MiniTextBlock
@@ -543,9 +543,9 @@ export default function Experience() {
             />
           ))}
         </div>
-        <div className="flex flex-col gap-5 md:flex-row">
+        <div className="relative flex flex-col gap-4 md:gap-5 md:flex-row">
           {twoImgArr.map(({ src, alt }, index) => (
-            <img key={index} src={src} alt={alt} className="h-50 w-full lg:h-84" />
+            <img key={index} src={src} alt={alt} className="rounded-2lg h-50 w-full lg:h-94" />
           ))}
         </div>
       </div>
@@ -614,7 +614,7 @@ export default function Experience() {
             <div key={index} className="h-65.5 flex-1">
               <Services
                 servicesArray={img}
-                imgClassName="font-oswald relative flex h-74.5 flex-col justify-end rounded-xl bg-cover bg-no-repeat px-4 py-6 md:basis-[calc(50%-0.625rem)] md:gap-4.5 lg:h-65.5 lg:gap-6"
+                imgClassName="font-oswald relative flex h-74.5 flex-col justify-end rounded-xl bg-cover bg-no-repeat px-4 py-6 md:gap-4.5 lg:h-65.5 lg:gap-6"
               >
                 <MiniTextBlock answer={answer} descriptions={descriptions} className="z-30 text-white" />
               </Services>
@@ -674,7 +674,7 @@ export default function Experience() {
         </div>
         <MiniSlider
           slides={descriptionCardArr[3].img}
-          className="relative w-full overflow-hidden md:hidden rounded-2lg"
+          className="rounded-2lg relative w-full overflow-hidden md:hidden"
         />
       </DescriptionCard>
 
@@ -713,7 +713,7 @@ export default function Experience() {
         item={descriptionCardArr[5]}
         className="flex flex-col-reverse items-center justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
         imgWrapperClassName="grid w-1/2 grid-cols-1 gap-6"
-        imgItemClassName="w-157.5 shrink-0 h-auto rounded-lg"
+        imgItemClassName="w-full shrink-0 h-auto rounded-lg"
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">Why NYST for Your Corporate Event?</h3>
@@ -732,8 +732,8 @@ export default function Experience() {
       <DescriptionCard
         item={descriptionCardArr[6]}
         className="flex flex-col-reverse items-center justify-center gap-5 px-4 py-10 md:px-7.5 md:py-15 lg:flex-row lg:px-20 lg:py-10"
-        imgWrapperClassName="grid grid-cols-2 gap-6"
-        imgItemClassName="w-full rounded-lg object-cover"
+        imgWrapperClassName="grid grid-cols-1 md:grid-cols-2 gap-5"
+        imgItemClassName="w-full md:h-auto h-50 rounded-lg object-cover"
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">What to Expect</h3>
@@ -777,7 +777,7 @@ export default function Experience() {
         item={descriptionCardArr[8]}
         className="flex flex-col-reverse items-center justify-center gap-5 bg-white px-4 py-10 md:px-7.5 md:py-15 lg:flex-row-reverse lg:px-20 lg:py-10"
         imgWrapperClassName="grid w-1/2 grid-cols-1 gap-6"
-        imgItemClassName="w-157.5 shrink-0 h-auto rounded-lg"
+        imgItemClassName="w-full shrink-0 h-auto rounded-lg"
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl">Why Choose NYST for Your Event?</h3>
@@ -844,13 +844,13 @@ export default function Experience() {
       {/* Perfect for: */}
       <div className="flex flex-col gap-3 px-4 py-10 md:p-7.5 md:py-15 lg:p-20">
         <h3 className="font-oswald text-2xl">Perfect for:</h3>
-        <div className="flex flex-col flex-wrap gap-5 gap-y-10 lg:flex">
+        <div className="flex flex-col flex-wrap gap-5 gap-y-10 md:grid md:grid-cols-2 md:grid-rows-2">
           {thirteenthTextBlockArr.map(({ answer, descriptions }, index) => (
             <MiniTextBlock
               key={index}
               answer={answer}
               descriptions={descriptions}
-              className="flex w-full grow flex-col gap-2 lg:w-4/10"
+              className="flex w-full grow flex-col gap-2"
             />
           ))}
         </div>

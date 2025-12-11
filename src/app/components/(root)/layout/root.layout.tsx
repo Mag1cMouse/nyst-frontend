@@ -20,6 +20,7 @@ export function RootLayout(props: React.PropsWithChildren) {
   const { children } = props
   const [isShowModalWindow, setIsShowModalWindow] = useState(false)
   const [isShowMobileMenu, setIsShowMobileMenu] = useState(false)
+  const [isShowShareButton, setIsShowShareButton] = useState(false)
 
   const { pathname } = useLocation()
 
@@ -66,16 +67,18 @@ export function RootLayout(props: React.PropsWithChildren) {
                 </NavLink>
               ))}
             </div>
-            <div className="flex gap-4.5">
+
+            <div className="relative flex gap-4.5">
+              <ShareButton isShowShareButton={isShowShareButton} setIsShowShareButton={setIsShowShareButton} className={clsx('p-0.5', isShowShareButton ? "bg-gray-150/40 rounded-t-md " : "")} />
               <img
-                src="/profile.svg"
+                src={!isShowModalWindow ? '/profile.svg' : 'yellowProfile.svg'}
                 alt="profile"
-                className="h-5 w-5"
+                className="size-6 cursor-pointer"
                 onClick={() => {
                   setIsShowModalWindow(!isShowModalWindow)
                 }}
               />
-              <ShareButton />
+
               <img
                 className="size-6.5 md:hidden"
                 src="/menu.svg"
@@ -104,7 +107,9 @@ export function RootLayout(props: React.PropsWithChildren) {
       <main>{children}</main>
       <footer className="bg-white">
         <section className="flex flex-col items-center gap-6 py-6">
-          <img src="/logo.png" className="h-12.5 w-22" alt="logo" />
+          <NavLink to="/">
+            <img className="flex w-22 items-center" src="/logo.png" alt="logo" />
+          </NavLink>
           <article className="relative flex w-full justify-between px-4 md:flex-col md:items-center md:gap-4">
             <div className="font-oswald flex shrink-0 flex-col gap-5 text-base uppercase md:flex-row md:text-lg/7">
               {headerNavLinks.map(({ href, label }) => (
